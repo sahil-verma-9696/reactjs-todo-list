@@ -1,5 +1,37 @@
 # reactjs-todo-list
 
+## Expected Folder structure
+
+```
+src/
+├── assets/
+├── components/
+│   ├── icons/
+│   │   ├── AddTodoIcon.jsx
+│   │   ├── Hamburger.jsx
+│   │   └── ListIcon.jsx
+│   ├── layout/
+│   │   ├── Header.jsx
+│   │   └── Sidebar.jsx
+│   └── ui/
+│       ├── Action.jsx
+│       ├── Button.jsx
+│       ├── Input.jsx
+│       └── Label.jsx
+├── context/
+├── data/
+├── pages/
+│   ├── CreateTodo.jsx
+│   └── YourTodos.jsx
+├── App.jsx
+├── index.css
+└── main.jsx
+```
+
+
+
+![Screenshot 2025-05-16 105710](https://github.com/user-attachments/assets/07afd344-4d5d-47ab-afe9-37858926d6b9)
+
 ## Features Goal
 
 - Add TODO
