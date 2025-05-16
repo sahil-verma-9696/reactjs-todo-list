@@ -1,5 +1,5 @@
 import React from "react";
-import HamburgerIcon from "../icons/Hamburger";
+import HamburgerIcon from "../icons/HamburgerIcon";
 import ListIcon from "../icons/ListIcon";
 import AddTodoIcon from "../icons/AddTodoIcon";
 const Sidebar = ({ setPage, page }) => {
