@@ -1,0 +1,86 @@
+export const dummyTodos = [
+  {
+    id: 1,
+    title: "🛒 Buy groceries",
+    description: "Milk, eggs, bread, and vegetables",
+    label: "important",
+  },
+  {
+    id: 2,
+    title: "🩺 Doctor Appointment",
+    description: "Annual check-up at 5 PM",
+    label: "urgent",
+  },
+  {
+    id: 3,
+    title: "💻 Project Deadline",
+    description: "Finish frontend components by today",
+    label: "important_urgent",
+  },
+  {
+    id: 4,
+    title: "🏋️‍♂️ Morning Workout",
+    description: "30 min cardio and pushups",
+    label: "completed",
+  },
+  {
+    id: 5,
+    title: "👥 Team Meeting",
+    description: "Daily stand-up at 10 AM",
+    label: "completed",
+  },
+  {
+    id: 6,
+    title: "📖 Read a book",
+    description: "Continue reading 'Atomic Habits'",
+    label: "important",
+  },
+  {
+    id: 7,
+    title: "💡 Pay electricity bill",
+    description: "Due tomorrow",
+    label: "important_urgent",
+  },
+  {
+    id: 8,
+    title: "🧹 Clean workspace",
+    description: "Organize desk and delete old files",
+    label: "completed",
+  },
+  {
+    id: 9,
+    title: "📞 Call Mom",
+    description: "Check in and talk for a while",
+    label: "important",
+  },
+  {
+    id: 10,
+    title: "🐞 Fix login bug",
+    description: "Users can't login with special characters",
+    label: "important_urgent",
+  },
+  {
+    id: 11,
+    title: "📧 Email HR",
+    description: "Send updated documents",
+    label: "urgent",
+  },
+  {
+    id: 12,
+    title: "🌱 Water plants",
+    description: "Indoor and balcony plants",
+    label: "none",
+  },
+  {
+    id: 13,
+    title: "🗺️ Plan weekend trip",
+    description: "Look up options near Manali",
+    label: "none",
+  },
+  {
+    id: 14,
+    title: "🕒 Submit timesheet",
+    description: "Deadline is 6 PM",
+    label: "urgent",
+  },
+];
