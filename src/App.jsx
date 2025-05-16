@@ -17,7 +17,7 @@ function App() {
   const ActivePage = pages[page];
 
   return (
-    <div className="flex">
+    <div className="flex dark:bg-[#171717]">
       <Sidebar setPage={setPage} page={page} />
       <div className="h-screen flex-1 flex flex-col bg-[#FDFAFF] overflow-y-auto">
         <Header title={titles[page]} />

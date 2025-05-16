@@ -21,7 +21,7 @@ const YourTodos = () => {
   };
 
   return (
-    <div className="flex-1">
+    <div className="flex-1 dark:bg-[#171717]">
       <div className="w-fit mx-auto">
         {/* Filter labels */}
         <section className="my-6 flex items-center flex-wrap gap-2">
