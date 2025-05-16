@@ -17,4 +17,5 @@
 
 
 ### Create new TODO
-![Desktop - 3 (1)](https://github.com/user-attachments/assets/b94c2d16-5211-4b65-937c-e0f5f5b7ef85)
+
+![Screenshot 2025-05-16 092419](https://github.com/user-attachments/assets/05db0782-b509-4e05-a100-35ddd1a14784)
