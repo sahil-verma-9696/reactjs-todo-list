@@ -11,9 +11,7 @@
 ## ADD TODO page
 
 ### Your TODOs
-![Desktop - 5](https://github.com/user-attachments/assets/4facfcb1-19f5-4abf-9840-28f3e47cf9a8)
-![Desktop - 6](https://github.com/user-attachments/assets/4d3020bf-99ec-4b33-99cc-3a656c033d05)
-![Desktop - 7](https://github.com/user-attachments/assets/bb799b32-e5c9-47d7-aa52-a1b4a4053288)
+![Screenshot 2025-05-16 104239](https://github.com/user-attachments/assets/919ca229-417b-4588-916e-1cd97a626a1d)
 
 
 ### Create new TODO
