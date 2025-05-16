@@ -8,7 +8,7 @@ src/
 ├── components/
 │   ├── icons/
 │   │   ├── AddTodoIcon.jsx
-│   │   ├── Hamburger.jsx
+│   │   ├── HamburgerIcon.jsx
 │   │   └── ListIcon.jsx
 │   ├── layout/
 │   │   ├── Header.jsx
