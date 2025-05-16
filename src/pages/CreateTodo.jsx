@@ -18,7 +18,7 @@ const filterConfig = {
 };
 const CreateTodo = () => {
   return (
-    <div className="flex-1 flex justify-center items-center dark:bg-[#171717]">
+    <div className="max-sm:p-4 flex-1 flex justify-center items-center dark:bg-[#171717]">
       <div className="w-100">
         <section>
           <h2 className="text-3xl dark:text-white">Labels</h2>

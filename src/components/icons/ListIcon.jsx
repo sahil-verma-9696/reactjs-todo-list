@@ -8,7 +8,7 @@ const ListIcon = ({ styles, ...props }) => {
     >
       <ListSvg
         className={`w-10 ${
-          styles.includes("bg-[#CF99FF]") ? "text-white" : "text-[#4E4E4E]"
+          styles?.includes("bg-[#CF99FF]") ? "text-white" : "text-[#4E4E4E]"
         } hover:text-white`}
       />
     </div>

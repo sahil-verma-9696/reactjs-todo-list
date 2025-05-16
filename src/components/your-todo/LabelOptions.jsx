@@ -12,7 +12,7 @@ const LabelOptions = ({ todo }) => {
     none: { emoji: "🚫", text: "None", color: "gray" },
   };
   return (
-    <div className="w-50 flex items-center">
+    <div className="w-50 flex items-center max-sm:hidden">
       <Label color={filterConfig[todo.label].color} active={true}>
         {filterConfig[todo.label].emoji && `${filterConfig[todo.label].emoji} `}
         <span className="text-nowrap">{filterConfig[todo.label].text}</span>

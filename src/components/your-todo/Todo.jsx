@@ -17,7 +17,8 @@ const Todo = ({ todo }) => {
   return (
     <div
       className={`dark:bg-[#171717] cursor-pointer flex items-center justify-between bg-white shadow-md p-4 rounded-xl border hover:border-black hover:bg-purple-50 dark:hover:dark:bg-[#242424] dark:hover:border-white transition-all 
-      ${getBorderColor[todo.label]}  
+      ${getBorderColor[todo.label]} 
+       
      `}
     >
       <div className="flex items-center gap-4 ">
