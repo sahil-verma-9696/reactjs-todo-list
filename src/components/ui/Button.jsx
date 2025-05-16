@@ -17,7 +17,7 @@ export function FloatingBtn({ setPage, page }) {
   return (
     <button
       onClick={handleClick}
-      className="fixed bottom-14 right-4 size-20 flex justify-center items-center text-5xl font-thin bg-[#CF99FF] dark:bg-[#242424] dark:text-white cursor-pointer text-white rounded-full"
+      className="fixed hidden bottom-14 right-4 size-20 max-sm:flex justify-center items-center text-5xl font-thin bg-[#CF99FF] dark:bg-[#242424] dark:text-white cursor-pointer text-white rounded-full"
     >
       {page === "create" ? (
         <ListIcon styles="bg-[#CF99FF] dark:bg-[#242424]" />

@@ -25,7 +25,7 @@ const Todo = ({ todo }) => {
         <CheckBox todo={todo} />
         <Text title={todo.title} description={todo.description} />
       </div>
-      <LabelOptions todo={todo} />
+      {/* <LabelOptions todo={todo} /> */}
       <Action />
     </div>
   );
