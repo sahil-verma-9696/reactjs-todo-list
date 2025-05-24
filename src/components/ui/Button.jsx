@@ -1,9 +1,12 @@
 import AddTodoIcon from "../icons/AddTodoIcon";
 import ListIcon from "../icons/ListIcon";
 
-export function AddTodoBtn() {
+export function AddTodoBtn({ ...props }) {
   return (
-    <button className="w-fit bg-[#CF99FF] dark:bg-[#242424] dark:text-white cursor-pointer text-white font-bold px-4 py-1 rounded-lg">
+    <button
+      {...props}
+      className="w-fit bg-[#CF99FF] dark:bg-[#242424] dark:text-white cursor-pointer text-white font-bold px-4 py-1 rounded-lg"
+    >
       Add
     </button>
   );

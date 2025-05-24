@@ -2,36 +2,43 @@ import React from "react";
 import CheckBox from "./CheckBox";
 import Text from "./Text";
 import Action from "./Action";
-import LabelOptions from "./LabelOptions";
+import { todoManager } from "../../data/TodoManager";
+import { useTodos } from "../../hooks/useTodos";
 
-const Todo = ({ todo }) => {
+const getBorderColor = {
+  3: "border-yellow-500",
+  2: "border-purple-500",
+  1: "border-red-500",
+  4: "border-green-500",
+  5: "border-gray-400",
+};
+
+const TodoCard = ({ todo,removeTodo }) => {
   if (!todo) return <SkeletonTodo />;
-  const getBorderColor = {
-    important: "border-yellow-500",
-    urgent: "border-purple-500",
-    important_urgent: "border-red-500",
-    completed: "border-green-500",
-    none: "border-gray-400",
-  };
+  function handleTodoEdit() {}
+
+  function handleTodoDelete() {
+    removeTodo(todo.id);
+  }
 
   return (
     <div
       className={`dark:bg-[#171717] cursor-pointer flex items-center justify-between bg-white shadow-md p-4 rounded-xl border hover:border-black hover:bg-purple-50 dark:hover:dark:bg-[#242424] dark:hover:border-white transition-all 
-      ${getBorderColor[todo.label]} 
-       
-     `}
+      ${getBorderColor[todo.label]}`}
     >
       <div className="flex items-center gap-4 ">
         <CheckBox todo={todo} />
         <Text title={todo.title} description={todo.description} />
       </div>
-      {/* <LabelOptions todo={todo} /> */}
-      <Action />
+      <Action
+        editTodoCallback={handleTodoEdit}
+        deleteTodoCallback={handleTodoDelete}
+      />
     </div>
   );
 };
 
-export default Todo;
+export default TodoCard;
 
 const SkeletonTodo = () => {
   return (

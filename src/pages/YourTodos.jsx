@@ -1,48 +1,53 @@
 import React from "react";
-import { dummyTodos } from "../data/mockTodos";
-import { Label } from "../components/ui/Label"; // Your reusable Label
-import Todo from "../components/your-todo/Todo";
-
-const filterConfig = {
-  all: { emoji: "", text: "All", color: "slate" },
-  important: { emoji: "⚠️", text: "Important", color: "yellow" },
-  urgent: { emoji: "⏰", text: "Urgent", color: "purple" },
-  important_urgent: { emoji: "🚨", text: "Important & Urgent", color: "red" },
-  completed: { emoji: "✅", text: "Completed", color: "green" },
-  none: { emoji: "🚫", text: "None", color: "gray" },
-};
+import { todoManager } from "../data/TodoManager";
+import { Label } from "../components/ui/Label";
+import TodoCard from "../components/your-todo/TodoCard";
+import { getLabel, labels } from "../data/Label";
+import { useTodos } from "../hooks/useTodos";
 
 const YourTodos = () => {
-  const [filter, setFilter] = React.useState("all");
-
-  const getFilteredTodos = () => {
-    if (filter === "all") return dummyTodos;
-    return dummyTodos.filter((todo) => todo.label === filter);
-  };
+  const [filterId, setFilterId] = React.useState(0);
+  const { todos, removeTodo } = useTodos();
+  const filteredTodos = React.useMemo(() => {
+    return filterId === 0
+      ? todos
+      : todos.filter((todo) => todo.label === filterId);
+  }, [filterId, todos]);
 
   return (
     <div className="flex-1 dark:bg-[#171717] max-sm:p-4">
       <div className="w-fit mx-auto">
         {/* Filter labels */}
         <section className="my-6 flex items-center flex-wrap gap-2">
-          {Object.entries(filterConfig).map(([key, { emoji, text, color }]) => (
+          <Label
+            label="All"
+            color="gray"
+            onClick={() => setFilterId(0)}
+            className={filterId === 0 ? "" : "bg-transparent dark:text-white"}
+          />
+
+          {labels.map((label) => (
             <Label
-              color={color}
-              active={filter === key}
-              key={key}
-              onClick={() => setFilter(key)}
-            >
-              {emoji && `${emoji} `}
-              {text}
-            </Label>
+              key={label.id}
+              label={label.name}
+              color={label.color}
+              onClick={() => setFilterId(label.id)}
+              className={filterId === label.id ? "" : "bg-transparent"}
+            />
           ))}
         </section>
 
         {/* Filtered Todos */}
         <section className="grid grid-cols-1 gap-4">
-          {getFilteredTodos().map((todo) => (
-            <Todo key={todo.id} todo={todo} />
-          ))}
+          {filteredTodos.length > 0 ? (
+            filteredTodos.map((todo) => (
+              <TodoCard key={todo.id} todo={todo} removeTodo={removeTodo} />
+            ))
+          ) : (
+            <p className="text-2xl text-center dark:text-white">
+              No {getLabel(filterId)?.name} todos found
+            </p>
+          )}
         </section>
       </div>
     </div>
