@@ -2,24 +2,30 @@ import React from "react";
 import { ListTodo, User } from "lucide-react";
 import { fallbackNavItems } from "../../data/navItems";
 import useAnimatedPresence from "../../hooks/useAnimatedPresence";
+import { useLocation, useNavigate } from "react-router";
 
-export default function SidebarSahil({ navItems, open, setOpen }) {
-  const [activeItem, setActiveItem] = React.useState(1 || navItems?.[0]?.id);
+export default function SidebarSahil({ navItems, open }) {
+  if (!navItems) return <Skeleton fallbackNavItems={fallbackNavItems} />;
+  const { pathname } = useLocation();
+  const [activeItem, setActiveItem] = React.useState(
+    navItems.filter((item) => item.path === pathname)[0].id
+  );
 
   const [shouldRenderTitle, titleRef] = useAnimatedPresence(open);
   const [shouldRenderFooter, footerRef] = useAnimatedPresence(open);
+  const navigate = useNavigate();
 
   return (
     <div
       role="navigation"
       aria-label="Main sidebar"
-      className={`select-none flex min-sm:flex-col bg-[#131416] px-2 rounded-lg h-full max-sm:h-fit transition-all duration-700 ease-in-out overflow-hidden ${
+      className={`select-none flex min-sm:flex-col bg-[#131416] rounded-lg h-full max-sm:h-fit transition-all duration-700 ease-in-out overflow-hidden ${
         open ? "w-72 max-sm:w-full" : "w-14 max-sm:w-full"
       }`}
     >
       {/* header */}
       <div className="flex sticky top-0 gap-2 p-2 hover:bg-[#202124] rounded-md w-full max-sm:hidden">
-        <span className="cursor-pointer">
+        <span className="cursor-pointer w-[40px] flex justify-center shrink-0">
           <ListTodo />
         </span>
 
@@ -40,7 +46,7 @@ export default function SidebarSahil({ navItems, open, setOpen }) {
         {!navItems && (
           <Skeleton open={open} fallbackNavItems={fallbackNavItems} />
         )}
-        {navItems?.map(({ id, label, icon: Icon }) => {
+        {navItems?.map(({ id, label, icon: Icon, path }) => {
           const [shouldRenderLabel, labelRef] = useAnimatedPresence(open);
           return (
             <div
@@ -48,9 +54,12 @@ export default function SidebarSahil({ navItems, open, setOpen }) {
               className={`flex gap-2 rounded-md cursor-pointer my-1 p-2 max-sm:flex-col max-sm:items-center ${
                 open && "hover:bg-[#202124]"
               } ${activeItem === id && "bg-[#202124]"}`}
-              onClick={() => setActiveItem(id)}
+              onClick={() => {
+                setActiveItem(id);
+                navigate(path);
+              }}
             >
-              <span className={`${!open && "hover:bg-[#202124] rounded-md"}`}>
+              <span className={`shrink-0 w-[40px] flex justify-center`}>
                 <Icon />
               </span>
               {shouldRenderLabel && (
@@ -72,7 +81,7 @@ export default function SidebarSahil({ navItems, open, setOpen }) {
 
       {/* nav footer */}
       <div className="flex gap-2 p-2 bg-[#131416] hover:bg-[#202124] w-full max-sm:flex-col max-sm:items-center max-sm:hidden">
-        <span className="cursor-pointer">
+        <span className="cursor-pointer w-[40px] flex justify-center shrink-0">
           <User />
         </span>
 
