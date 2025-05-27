@@ -1,9 +1,14 @@
-import { ListTodo, User } from "lucide-react";
 import React from "react";
+import { ListTodo, User } from "lucide-react";
 import { fallbackNavItems } from "../../data/navItems";
+import useAnimatedPresence from "../../hooks/useAnimatedPresence";
 
 export default function SidebarSahil({ navItems, open, setOpen }) {
-  const [activeItem, setActiveItem] = React.useState(1 || navItems[0].id);
+  const [activeItem, setActiveItem] = React.useState(1 || navItems?.[0]?.id);
+
+  const [shouldRenderTitle, titleRef] = useAnimatedPresence(open);
+  const [shouldRenderFooter, footerRef] = useAnimatedPresence(open);
+
   return (
     <div
       role="navigation"
@@ -18,13 +23,16 @@ export default function SidebarSahil({ navItems, open, setOpen }) {
           <ListTodo />
         </span>
 
-        <h1
-          className={`text-center flex-1 text-nowrap transition ease-in-out duration-1000 ${
-            open ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          TODO LIST
-        </h1>
+        {shouldRenderTitle && (
+          <h1
+            ref={titleRef}
+            className={`text-center flex-1 text-nowrap transition-all duration-500 ${
+              open ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+            }`}
+          >
+            TODO LIST
+          </h1>
+        )}
       </div>
 
       {/* nav items */}
@@ -32,26 +40,34 @@ export default function SidebarSahil({ navItems, open, setOpen }) {
         {!navItems && (
           <Skeleton open={open} fallbackNavItems={fallbackNavItems} />
         )}
-        {navItems?.map(({ id, label, icon: Icon }) => (
-          <div
-            key={id}
-            className={`flex gap-2  rounded-md cursor-pointer my-1 p-2 max-sm:flex-col max-sm:items-center ${
-              open && "hover:bg-[#202124]"
-            } ${activeItem == id && "bg-[#202124]"}`}
-            onClick={() => setActiveItem(id)}
-          >
-            <span className={`${!open && "hover:bg-[#202124] rounded-md"}`}>
-              <Icon  />
-            </span>
-            <span
-              className={`transition ease-in-out duration-1000 max-sm:hidden ${
-                open ? "opacity-100" : "opacity-0 max-sm:opacity-100"
-              } text-nowrap`}
+        {navItems?.map(({ id, label, icon: Icon }) => {
+          const [shouldRenderLabel, labelRef] = useAnimatedPresence(open);
+          return (
+            <div
+              key={id}
+              className={`flex gap-2 rounded-md cursor-pointer my-1 p-2 max-sm:flex-col max-sm:items-center ${
+                open && "hover:bg-[#202124]"
+              } ${activeItem === id && "bg-[#202124]"}`}
+              onClick={() => setActiveItem(id)}
             >
-              {label}
-            </span>
-          </div>
-        ))}
+              <span className={`${!open && "hover:bg-[#202124] rounded-md"}`}>
+                <Icon />
+              </span>
+              {shouldRenderLabel && (
+                <span
+                  ref={labelRef}
+                  className={`transition-all duration-500 max-sm:hidden ${
+                    open
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 -translate-x-2 max-sm:opacity-100"
+                  } text-nowrap`}
+                >
+                  {label}
+                </span>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* nav footer */}
@@ -60,13 +76,18 @@ export default function SidebarSahil({ navItems, open, setOpen }) {
           <User />
         </span>
 
-        <h1
-          className={`text-center max-sm:text-sm flex-1 text-nowrap transition ease-in-out duration-1000 ${
-            open ? "opacity-100" : "opacity-0 max-sm:opacity-100"
-          }`}
-        >
-          Sahil Verma
-        </h1>
+        {shouldRenderFooter && (
+          <h1
+            ref={footerRef}
+            className={`text-center max-sm:text-sm flex-1 text-nowrap transition-all duration-500 ${
+              open
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-2 max-sm:opacity-100"
+            }`}
+          >
+            Sahil Verma
+          </h1>
+        )}
       </div>
     </div>
   );
